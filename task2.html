@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Names</title>
+</head>
+<body>
+    <input type="text" id="input1" placeholder="Enter letters">
+    <input type="checkbox" id="input2" checked>
+    <ol id="listItems">
+        <li>Venugopal</li>
+        <li>Venkatesh</li>
+        <li>Venky</li>
+        <li>Michael</li>
+        <li>Emily</li>
+        <li>Daniel</li>
+        <li>Jessica</li>
+        <li>Christopher</li>
+        <li>Ashley</li>
+        <li>Matthew</li>
+        <li>Amanda</li>
+        <li>Andrew</li>
+        <li>Elizabeth</li>
+        <li>William</li>
+        <li>Samantha</li>
+        <li>Joseph</li>
+        <li>Olivia</li>
+        <li>James</li>
+        <li>Lauren</li>
+        <li>Robert</li>
+    </ol>
+
+    <script>
+        const input1 = document.getElementById('input1');
+        const input2 = document.getElementById('input2');
+        const listItems = document.getElementById('listItems');
+
+        input1.addEventListener('input', filterNames);
+        input2.addEventListener('change', filterNames);
+
+        function filterNames() {
+            const filterText = input1.value.toLowerCase();
+            const showStartsWith = input2.checked;
+            const names = listItems.getElementsByTagName('li');
+
+            for (let i = 0; i < names.length; i++) {
+                const name = names[i].innerText.toLowerCase();
+                if (showStartsWith) {
+                    if (name.startsWith(filterText)) {
+                        names[i].style.display = 'block';
+                    } else {
+                        names[i].style.display = 'none';
+                    }
+                } else {
+                    if (name.includes(filterText)) {
+                        names[i].style.display = 'block';
+                    } else {
+                        names[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
